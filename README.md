@@ -2,100 +2,72 @@
 Đây là dự án backend cho một hệ thống thương mại điện tử đơn giản, được xây dựng bằng Node.js, Express, và MongoDB. API hỗ trợ đầy đủ các chức năng quản lý người dùng, sản phẩm, xác thực người dùng với JWT, phân quyền (Admin/User), upload hình ảnh, và phân trang.
 
 🚀 Tính Năng Chính
-✅ Xác thực Người dùng:
+✅ Xác thực Người dùng: Đăng ký, Đăng nhập, Đăng xuất, và làm mới token an toàn qua HTTPOnly cookie.
 
-Đăng ký / Đăng nhập / Đăng xuất.
+👤 Quản lý Người dùng: Phân quyền Admin (xem, sửa, xóa mọi user) và User (tự quản lý thông tin cá nhân).
 
-Làm mới token (refresh token) qua HTTPOnly cookie an toàn.
+📦 Quản lý Sản phẩm: CRUD sản phẩm, tìm kiếm, lọc theo danh mục, và phân trang.
 
-👤 Quản lý Người dùng:
+🔐 Phân quyền Truy cập (Roles): Phân chia rõ ràng quyền hạn giữa Admin và User.
 
-Admin: Xem, sửa, xóa bất kỳ người dùng nào.
+🖼️ Upload Ảnh: Hỗ trợ upload avatar cho người dùng và hình ảnh cho sản phẩm.
 
-User: Tự xem và cập nhật thông tin cá nhân.
+🔒 Bảo mật: Sử dụng JWT và Refresh Token để bảo vệ API.
 
-📦 Quản lý Sản phẩm:
-
-Thêm, sửa, xóa, xem chi tiết sản phẩm.
-
-Tìm kiếm, lọc theo danh mục, và phân trang.
-
-🔐 Phân quyền Truy cập (Roles):
-
-Admin: Toàn quyền trên hệ thống.
-
-User: Giới hạn quyền thao tác trên dữ liệu cá nhân.
-
-🖼️ Upload Ảnh:
-
-Avatar cho người dùng.
-
-Hình ảnh cho sản phẩm.
-
-🔒 Bảo mật:
-
-Sử dụng JSON Web Tokens (JWT) cho xác thực API.
-
-Refresh token được lưu trong cookie với cờ HTTPOnly để tăng cường bảo mật.
-
-⚠️ Xử lý Lỗi Tập trung:
-
-Sử dụng middleware để bắt và xử lý lỗi một cách nhất quán, trả về thông báo lỗi chi tiết và dễ debug.
+⚠️ Xử lý Lỗi Tập trung: Middleware xử lý lỗi nhất quán, giúp debug dễ dàng.
 
 🛠️ Công Nghệ Sử Dụng
-Runtime: Node.js
+Hạng mục
 
-Framework: Express.js
+Công nghệ
 
-Cơ sở dữ liệu: MongoDB với Mongoose ODM
+Runtime & Framework
 
-Xác thực: JSON Web Token (jsonwebtoken)
+Node.js, Express.js
 
-Upload file: Multer
+Cơ sở dữ liệu
 
-Mã hóa mật khẩu: Bcrypt.js
+MongoDB, Mongoose
 
-Quản lý biến môi trường: Dotenv
+Xác thực & Bảo mật
 
-Khác: CORS, Body-parser, Cookie-parser
+JSON Web Token, Bcrypt.js, Cookie-parser
 
-📁 Cấu Trúc Thư Mục
-backend/
-│
-├── controllers/  # Xử lý logic cho các API endpoint
-├── middleware/   # Middleware (xác thực, phân quyền, upload, xử lý lỗi)
-├── models/       # Định nghĩa Schema cho User và Product với Mongoose
-├── routes/       # Định nghĩa các routes của API
-├── services/     # Tầng xử lý logic nghiệp vụ và tương tác với database
-├── uploads/      # Thư mục lưu trữ ảnh đã upload
-├── config/       # Cấu hình kết nối MongoDB và biến môi trường
-└── index.js      # Điểm khởi động của server
+Upload File
+
+Multer
+
+Công cụ khác
+
+Dotenv, CORS, Body-parser
 
 ⚙️ Cài Đặt và Khởi Động
 1. Clone repository
-git clone <URL-repository-cua-ban>
-cd backend
+``
+git clone https://github.com/HoangPhiHungGG/Web_Ban_Hang_AI.git
+cd Web_Ban_Hang_AI/backend
 
-2. Cài đặt các package cần thiết
+3. Cài đặt các package cần thiết
+``
 npm install
 
-3. Tạo file .env
-Tạo một file .env ở thư mục gốc của backend/ với các biến môi trường sau:
-
+4. Tệp Cấu hình Môi trường (.env)
+Tạo một file .env ở thư mục gốc của backend/ và điền các thông tin cần thiết:
+``
 PORT=8080
-MONGODB_URI=mongodb+srv://...
-TOKEN_SECRET_KEY=your_super_secret_key
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/your_db
+TOKEN_SECRET_KEY=your_super_secret_key_for_jwt
 FRONTEND_URL=http://localhost:3000
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_email_app_password
+EMAIL_USER=your_email_for_sending_mail@gmail.com
+EMAIL_PASS=your_google_app_password
 
 4. Chạy server
-Chế độ development (tự động reload khi có thay đổi):
-
+Chế độ Development (tự động reload khi có thay đổi):
+``
 npm run dev
 
-Chế độ production:
-
+Chế độ Production:
+``
 npm start
 
 📬 Liên Hệ
