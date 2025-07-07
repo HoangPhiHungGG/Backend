@@ -1,98 +1,104 @@
-🛒 Backend Ecommerce API
+🛒 Backend API cho Hệ thống Thương mại Điện tử
 Đây là dự án backend cho một hệ thống thương mại điện tử đơn giản, được xây dựng bằng Node.js, Express, và MongoDB. API hỗ trợ đầy đủ các chức năng quản lý người dùng, sản phẩm, xác thực người dùng với JWT, phân quyền (Admin/User), upload hình ảnh, và phân trang.
 
-🚀 Tính năng chính
-✅ Xác thực người dùng:
+🚀 Tính Năng Chính
+✅ Xác thực Người dùng:
 
-Đăng ký / Đăng nhập / Đăng xuất
+Đăng ký / Đăng nhập / Đăng xuất.
 
-Làm mới token bằng refresh token qua HTTPOnly cookie
+Làm mới token (refresh token) qua HTTPOnly cookie an toàn.
 
-👤 Quản lý người dùng:
+👤 Quản lý Người dùng:
 
-Admin: xem, sửa, xóa bất kỳ user nào
+Admin: Xem, sửa, xóa bất kỳ người dùng nào.
 
-User: xem/sửa thông tin cá nhân
+User: Tự xem và cập nhật thông tin cá nhân.
 
-📦 Quản lý sản phẩm:
+📦 Quản lý Sản phẩm:
 
-Thêm, sửa, xóa, xem chi tiết
+Thêm, sửa, xóa, xem chi tiết sản phẩm.
 
-Tìm kiếm, lọc theo danh mục, phân trang
+Tìm kiếm, lọc theo danh mục, và phân trang.
 
-🔐 Phân quyền truy cập:
+🔐 Phân quyền Truy cập (Roles):
 
-Admin: toàn quyền CRUD sản phẩm và người dùng
+Admin: Toàn quyền trên hệ thống.
 
-User: chỉ được thao tác cá nhân
+User: Giới hạn quyền thao tác trên dữ liệu cá nhân.
 
-🖼️ Upload ảnh:
+🖼️ Upload Ảnh:
 
-Avatar người dùng
+Avatar cho người dùng.
 
-Hình ảnh sản phẩm
+Hình ảnh cho sản phẩm.
 
 🔒 Bảo mật:
 
-JWT cho xác thực người dùng
+Sử dụng JSON Web Tokens (JWT) cho xác thực API.
 
-Refresh token lưu trong cookie an toàn (HTTPOnly)
+Refresh token được lưu trong cookie với cờ HTTPOnly để tăng cường bảo mật.
 
-⚠️ Xử lý lỗi tập trung:
+⚠️ Xử lý Lỗi Tập trung:
 
-Trả về thông báo lỗi chi tiết, dễ debug
+Sử dụng middleware để bắt và xử lý lỗi một cách nhất quán, trả về thông báo lỗi chi tiết và dễ debug.
 
-🛠️ Công nghệ sử dụng
-Node.js, Express
+🛠️ Công Nghệ Sử Dụng
+Runtime: Node.js
 
-MongoDB, Mongoose
+Framework: Express.js
 
-JWT (jsonwebtoken)
+Cơ sở dữ liệu: MongoDB với Mongoose ODM
 
-Multer (upload ảnh)
+Xác thực: JSON Web Token (jsonwebtoken)
 
-Bcrypt.js (mã hóa mật khẩu)
+Upload file: Multer
 
-Dotenv, CORS, Body-parser, Cookie-parser
+Mã hóa mật khẩu: Bcrypt.js
 
-📁 Cấu trúc thư mục
-bash
-Sao chép
-Chỉnh sửa
+Quản lý biến môi trường: Dotenv
+
+Khác: CORS, Body-parser, Cookie-parser
+
+📁 Cấu Trúc Thư Mục
 backend/
 │
-├── models/         # Schema cho User và Product
-├── controllers/    # Xử lý logic API
-├── services/       # Tầng thao tác database
-├── routes/         # Định nghĩa các API endpoint
-├── middleware/     # Auth, role, upload file, xử lý lỗi
-├── uploads/        # Lưu trữ ảnh upload
-├── config/         # Cấu hình MongoDB và biến môi trường
-└── index.js        # Điểm khởi động server
-⚙️ Khởi động dự án
-1. Cài đặt package
-bash
-Sao chép
-Chỉnh sửa
-npm install
-2. Tạo file .env
-Tạo file .env trong thư mục backend/ với nội dung:
+├── controllers/  # Xử lý logic cho các API endpoint
+├── middleware/   # Middleware (xác thực, phân quyền, upload, xử lý lỗi)
+├── models/       # Định nghĩa Schema cho User và Product với Mongoose
+├── routes/       # Định nghĩa các routes của API
+├── services/     # Tầng xử lý logic nghiệp vụ và tương tác với database
+├── uploads/      # Thư mục lưu trữ ảnh đã upload
+├── config/       # Cấu hình kết nối MongoDB và biến môi trường
+└── index.js      # Điểm khởi động của server
 
-env
-Sao chép
-Chỉnh sửa
+⚙️ Cài Đặt và Khởi Động
+1. Clone repository
+git clone <URL-repository-cua-ban>
+cd backend
+
+2. Cài đặt các package cần thiết
+npm install
+
+3. Tạo file .env
+Tạo một file .env ở thư mục gốc của backend/ với các biến môi trường sau:
+
 PORT=8080
 MONGODB_URI=mongodb+srv://...
-TOKEN_SECRET_KEY=your_secret
+TOKEN_SECRET_KEY=your_super_secret_key
 FRONTEND_URL=http://localhost:3000
 EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_email_password
-3. Chạy server
-bash
-Sao chép
-Chỉnh sửa
-npm start
-📬 Liên hệ
-Tác giả: Hoàng Phi Hùng
-GitHub: HoangPhiHungGG
+EMAIL_PASS=your_email_app_password
 
+4. Chạy server
+Chế độ development (tự động reload khi có thay đổi):
+
+npm run dev
+
+Chế độ production:
+
+npm start
+
+📬 Liên Hệ
+Tác giả: Hoàng Phi Hùng
+
+GitHub: HoangPhiHungGG
